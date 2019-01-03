@@ -1,0 +1,9 @@
+>>hadoop jar '/home/oleg/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.9.2.jar'  -input '/WordCount/some.txt' -output /WordCount/output -mapper /home/oleg/Стільниця/WordCount/mapper.py -reducer /home/oleg/Стільниця/WordCount/reducer.py
+
+>>~/hbase/bin$ hbase shell
+
+>>>>create "WordCount",{NAME => "cf"}
+
+>>~/hbase/bin$ ./hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator="," -Dimporttsv.columns=HBASE_ROW_KEY,cf WordCount /WordCount/output/part-00000
+
+
